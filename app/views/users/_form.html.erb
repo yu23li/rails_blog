@@ -1,0 +1,52 @@
+ <!-- Page Header -->
+    <header class="masthead" style="background-image: url(<%= asset_path 'home-bg.jpg' %>)">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Clean Blog</h1>
+              <span class="subheading">A Blog about Anything</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <%= form_with(model: user, local: true) do |form| %>
+          <% if user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+              <ul>
+              <% user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group col-md-6"">
+            <%= form.label :name %>
+            <%= form.text_field :name, :class=>"form-control" %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :email %>
+            <%= form.text_field :email, :class=>"form-control" %>
+          </div>
+
+          <div class="fform-group col-md-6">
+            <%= form.submit :class=>"btn btn-primary" %>
+          </div>
+        </br>
+        <% end %>
+      </div>
+    </div>
+
+    <hr>
+

@@ -1,0 +1,41 @@
+ <!-- Page Header -->
+  <% if @blog_post.title_image_url.present? %>
+    <header class="masthead" style="background-image: url(<%= @blog_post.title_image_url %>)">
+ <% else %>
+  <header class="masthead" style="background-image: url(<%= asset_path 'home-bg.jpg' %>)">
+<% end%>
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1><%= @blog_post.title %></h1>
+              <span class="subheading"><%= @blog_post.summary %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <% if notice.present? %>
+          <p id="notice" class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <p>
+            <%= @blog_post.content %>
+          </p>
+
+          <p>
+            <%= @blog_post.user.name %>
+          </p>
+
+          <%= link_to 'Edit', edit_blog_post_path(@blog_post), :class=>"btn btn-primary" %> |
+          <%= link_to 'Back', blog_posts_path, :class=>"btn btn-secondary" %>
+      </div>
+    </div>
+
+    <hr>
+
